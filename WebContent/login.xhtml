@@ -1,0 +1,86 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui">
+
+
+<h:head>
+	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
+	<link rel="stylesheet" href="css/bootstrap.css" />
+	<link rel="stylesheet" href="css/bootstrap-theme.css " />
+	<title>Ingreso</title>
+</h:head>
+<body>
+	<h:form>
+
+	<p:growl id="mensaje" showDetail="true" sticky="false" />
+
+		<nav class="navbar navbar-default">
+		<div class="container-fluid">
+			<div class="navbar-header">
+
+				<p:link class="navbar-brand" outcome="index">AdminPro</p:link>
+			</div>
+
+			<div class="collapse navbar-collapse"
+				id="bs-example-navbar-collapse-1">
+
+				<ul class="nav navbar-nav navbar-right">
+
+					<li class="dropdown"><a href="#" class="dropdown-toggle"
+						data-toggle="dropdown" role="button" aria-haspopup="true"
+						aria-expanded="false"> <span class="glyphicon glyphicon-user">&nbsp;</span>Iniciar
+							Sesión <span class="caret"> </span>
+					</a>
+					<p:panelGrid rendered="#{mbUser.usuario.usuario==null}">
+						<ul class="dropdown-menu">
+							<li><p:link outcome="login"><span class="glyphicon glyphicon-log-in">&nbsp;</span>
+									Ingresar </p:link></li>
+							<li role="separator" class="divider"></li>
+							<li><p:link outcome="usuario"><span
+									class="glyphicon glyphicon-plus-sign">&nbsp;</span>Crear
+									Usuario</p:link></li>
+						</ul></p:panelGrid></li>
+				</ul>
+			</div>
+		</div>
+		</nav>
+
+		<div class="container">
+			<div class="panel panel-primary">
+				<div class="panel panel-heading">
+					<h3 class="panel-title text-center">Ingresar</h3>
+				</div>
+				<div class="panel-body">
+
+					<p:panelGrid columns="2">
+						<p:outputLabel for="txtUser" value="Usuario:" />
+						<p:inputText id="txtUser" placeholder="Usuario" required="true" value="#{mbUser.usuario.usuario}"/>
+						
+
+						<p:outputLabel  for="txtPass" value="Contraseña:" />
+						<p:password id="txtPass" placeholder="Contraseña" required="true" value="#{mbUser.usuario.pass}" />
+
+						<p:commandButton icon="ui-icon-key" class="btn"
+							value="Ingresar" update="mensaje" action="#{mbUser.iniciarSesion()}"/>
+
+					</p:panelGrid>
+
+				</div>
+			</div>
+		</div>
+
+
+
+
+	</h:form>
+
+	<!-- Script -->
+	<script src="js/jquery-2.1.4.min.js"></script>
+	<script src="js/bootstrap.js"></script>
+
+</body>
+</html>
